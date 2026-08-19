@@ -3,6 +3,19 @@ import os
 
 restaurante = ["Pizza", "Café"]
 
+def voltar_menu_principal():
+    while True:
+        voltar = input("Deseja voltar ao menu principal? (S/N): \n").strip().upper()
+        if voltar == "S":
+            main()
+            return
+        elif voltar == "N":
+            finalizar_app()
+            return
+        else:
+            print("Digite uma opção válida:")
+    
+
 def exibir_nome():
     print("""
 ░██████╗░█████╗░██████╗░░█████╗░██████╗░  ███████╗██╗░░██╗██████╗░██████╗░███████╗░██████╗░██████╗
@@ -19,25 +32,14 @@ def finalizar_app():
 
 def opcao_invalida():
     print("Opção Inválida!")
-    voltar_menu = input("Deseja voltar ao menu principal? (S/N): \n")
-    if voltar_menu == "S":
-        main()
-    elif voltar_menu == "N":
-        finalizar_app()
+    voltar_menu_principal()
 
 def lista_restaurantes():
     os.system("cls")
     print("Listar restaurantes:")
     for nome in restaurante:
         print(f".{nome}")
-    voltar_menuv3 = input("Deseja voltar ao menu principal? (S/N)\n")
-    if voltar_menuv3 == "S":
-        main()
-    else:
-        finalizar_app
-
-        
-        
+    voltar_menu_principal()            
 
 def cadastrar_novo_restaurante():
     os.system("cls")
@@ -45,11 +47,7 @@ def cadastrar_novo_restaurante():
     nome_do_restaurante = input("Digite o nome do Restaurante que deseja cadastrar: ")
     restaurante.append(nome_do_restaurante)
     print(f"O Restaurante {nome_do_restaurante}, foi cadastrado com sucesso!")
-    voltar_menu2 = input("Deseja cadastrar um novo restaurante ? (S/N)\n")
-    if voltar_menu2 == "S":
-        cadastrar_novo_restaurante()
-    else:
-        main()
+    voltar_menu_principal()
 
 def exibir_opcoes():
     print("1. Cadastrar restaurante")
